@@ -11,22 +11,22 @@ const DEFAULT_STATE = {
   sides: [],
 };
 
-function Form() {
+function Form(props) {
   const [formState, setFormState] = useState(DEFAULT_STATE);
 
-  function handleSubmit() {
-    event.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
     props.addOrder(formState);
 
     setFormState({
       ...DEFAULT_STATE,
     });
-    event.target.reset();
+    e.target.reset();
   }
 
-  function handleChange() {
-    const itemType = event.target.name;
-    const item = event.target.value;
+  function handleChange(e) {
+    const itemType = e.target.name;
+    const item = e.target.value;
 
     if (formState[itemType].includes(item)) {
       setFormState({
